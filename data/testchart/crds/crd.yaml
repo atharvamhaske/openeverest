@@ -49,8 +49,8 @@ spec:
   names:
     kind: Storage
     listKind: StorageList
-    plural: storage
-    singular: storages
+    plural: storages
+    singular: storage
   scope: Namespaced
   versions:
     - name: v1
