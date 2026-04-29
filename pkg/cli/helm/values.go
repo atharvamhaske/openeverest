@@ -6,6 +6,7 @@ import "github.com/percona/everest/pkg/kubernetes"
 type Values struct {
 	ClusterType        kubernetes.ClusterType
 	VersionMetadataURL string
+	DisableTelemetry   bool
 }
 
 // NewValues creates a map of values that can be used to render the Helm chart.
@@ -28,6 +29,9 @@ func NewValues(v Values) map[string]string {
 	}
 	if v.VersionMetadataURL != "" {
 		values["versionMetadataURL"] = v.VersionMetadataURL
+	}
+	if v.DisableTelemetry {
+		values["telemetry"] = "false"
 	}
 	return values
 }

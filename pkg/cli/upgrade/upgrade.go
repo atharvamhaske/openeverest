@@ -62,6 +62,8 @@ type (
 		Pretty bool
 		// SkipEnvDetection skips detecting the Kubernetes environment.
 		SkipEnvDetection bool
+		// DisableTelemetry disables telemetry.
+		DisableTelemetry bool
 
 		// VersionToUpgrade specifies the version to upgrade to.
 		// This version may be ahead by at most one minor version from the current version.
@@ -208,6 +210,7 @@ func (u *Upgrade) setupHelmInstaller(ctx context.Context) error {
 	overrides := helm.NewValues(helm.Values{
 		ClusterType:        u.clusterType,
 		VersionMetadataURL: u.config.VersionMetadataURL,
+		DisableTelemetry:   u.config.DisableTelemetry,
 	})
 
 	values := Must(helmutils.MergeVals(u.config.Values, overrides))

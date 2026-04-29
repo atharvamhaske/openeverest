@@ -305,6 +305,7 @@ func (o *Installer) setupHelmInstaller(ctx context.Context) error {
 	overrides := helm.NewValues(helm.Values{
 		ClusterType:        o.cfg.ClusterType,
 		VersionMetadataURL: o.cfg.VersionMetadataURL,
+		DisableTelemetry:   o.cfg.DisableTelemetry,
 	})
 	values := Must(helmutils.MergeVals(o.cfg.HelmConfig.Values, overrides))
 	installer := &helm.Installer{
